@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>550W管理控制页面</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans - serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header {
+            background-color: #111;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #time {
+            font-size: 20px;
+        }
+
+        #controls {
+            background-color: #222;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #data - section {
+            background-color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+      .data - block {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="time"></div>
+        <h1>550W管理控制中心</h1>
+    </div>
+    <div id="data - section">
+        <div class="data - block">
+            <h3>能源输出</h3>
+            <p id="energy - output">1000 MW</p>
+        </div>
+        <div class="data - block">
+            <h3>运算速度</h3>
+            <p id="computing - speed">5000 PFLOPS</p>
+        </div>
+        <div class="data - block">
+            <h3>系统温度</h3>
+            <p id="system - temperature">30 °C</p>
+        </div>
+    </div>
+    <div id="controls">
+        <button onclick="startMission()">启动任务</button>
+        <button onclick="stopMission()">停止任务</button>
+        <button onclick="resetSystem()">重置系统</button>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function startMission() {
+            alert('任务已启动');
+        }
+
+        function stopMission() {
+            alert('任务已停止');
+        }
+
+        function resetSystem() {
+            alert('系统正在重置...');
+        }
+
+        function updateData() {
+            const energyOutput = document.getElementById('energy - output');
+            const computingSpeed = document.getElementById('computing - speed');
+            const systemTemperature = document.getElementById('system - temperature');
+
+            // 随机生成能源输出数据（假设范围在500 - 1500 MW）
+            const newEnergyOutput = Math.floor(Math.random() * 1001 + 500) + " MW";
+            energyOutput.textContent = newEnergyOutput;
+
+            // 随机生成运算速度数据（假设范围在3000 - 7000 PFLOPS）
+            const newComputingSpeed = Math.floor(Math.random() * 4001 + 3000) + " PFLOPS";
+            computingSpeed.textContent = newComputingSpeed;
+
+            // 随机生成系统温度数据（假设范围在20 - 40 °C）
+            const newSystemTemperature = Math.floor(Math.random() * 21 + 20) + " °C";
+            systemTemperature.textContent = newSystemTemperature;
+        }
+
+        setInterval(updateData, 3000);
+    </script>
+</body>
+
+</html>
